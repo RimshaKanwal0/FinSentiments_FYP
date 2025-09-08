@@ -40,9 +40,12 @@ finSentiments/
 ├── manage.py
 └── requirements.txt
 ```
+.FinSentiments_FYP/screenshot/
+---
 
 ---
 
+---
 ##  Setup Instructions (AWS EC2, Ubuntu 24.04)
 
 ### 1. Start the EC2 Instance
@@ -182,7 +185,14 @@ docker-compose exec web python manage.py createsuperuser
 - Open: [http://13.233.174.0:8000/](http://13.233.174.0:8000/)  
 
 ---
+✨ This deployment phase was a deep dive into cloud deployment, security-first architecture, and scalable design.
 
+ 𝗔𝗪𝗦 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗚𝗿𝗼𝘂𝗽𝘀: http://3.110.30.152:8000/
+ 𝗗𝗼𝗰𝗸𝗲𝗿 𝗜𝗺𝗮𝗴𝗲𝘀: https://lnkd.in/gcxYdxMv
+ 
+ ---
+
+ ---
 ##  Usage
 - **Login/Register** via navigation bar.  
 - **Upload Dataset** (CSV).  
@@ -226,5 +236,6 @@ MIT License.
 
 ---
 
-##  Acknowledgements
-- Django, scikit-learn, NLTK, TextBlob, Prophet, Docker, PostgreSQL  
+##  Linkdin Post
+https://www.linkedin.com/feed/update/urn:li:activity:7368208997394350081/
+
