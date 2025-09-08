@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    command: gunicorn finSentiments.wsgi:application --bind 0.0.0.0:8000 --workers=1 --threads=1
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - ./logs:/app/logs
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    restart: always
+  db:
+    image: postgres:15
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    expose:
+      - "5432"
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+volumes:
+  postgres_data:
+  static_volume:

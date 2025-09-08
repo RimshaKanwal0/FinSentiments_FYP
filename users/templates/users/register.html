@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg" style="width: 100%; max-width: 450px;">
+        <div class="card-header bg-primary text-white text-center">
+            <h4><i class="fas fa-user-plus"></i> Create an Account</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}" class="font-weight-bold">{{ field.label }}</label>
+                        {% render_field field class="form-control" %}
+                        {% if field.errors %}
+                            <small class="text-danger">{{ field.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-user-check"></i> Register
+                </button>
+            </form>
+        </div>
+        <div class="card-footer text-center bg-light">
+            <small>Already have an account? <a href="{% url 'users:login' %}">Login here</a></small>
+        </div>
+    </div>
+</div><br><br>
+{% endblock %}
