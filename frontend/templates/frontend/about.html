@@ -1,0 +1,252 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+
+  <!-- ✅ Hero Section -->
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6">
+      <img src="{% static 'images/finSentiment2.png' %}" alt="About FinSentiments" class="img-fluid rounded shadow">
+    </div>
+<div class="col-md-6">
+  <h4 class="mb-3" style="color: #0b2545; font-weight: 700;">
+    Step Into the Future with FinSentiments
+  </h4>
+  <p class="text-justify text-dark" style="font-size: 15px;">
+    <strong>FinSentiments</strong> isn’t just a platform — it’s your intelligent gateway to decoding financial markets in real time. 
+    <br><br>
+    Designed for the modern investor, our Fin_Pwered ecosystem merges advanced Natural Language Processing, machine learning algorithms, and predictive analytics to extract deep insights from unstructured financial narratives.
+    <br><br>
+    Whether you’re forecasting sentiment-driven trends, uploading proprietary datasets, or tapping into live market news, FinSentiments helps you <b>analyze smarter,react faster and invest wiser</b>.
+  </p>
+</div>
+
+  </div>
+
+<!-- ✅ Mission & Vision - Enhanced Section -->
+<div class="text-center my-5 py-4 px-3 shadow rounded" style="background: linear-gradient(135deg, #f0f4f8, #ffffff); border-left: 5px solid #0d6efd;">
+  
+  <h2 class="mb-4 " >Our Vision</h2>
+  <blockquote class="blockquote text-dark px-4" style="font-size: 17px; font-style: italic;">
+    <p class="mb-0">“To democratize financial data analysis by offering scalable, interpretable, and real-time AI solutions tailored for financial decision-making.”</p>
+  </blockquote>
+
+  <hr class="w-50 mx-auto my-4" style="border: 1px dashed #0d6efd;">
+
+  <h2 class="mb-4">Our Mission</h2>
+  <blockquote class="blockquote text-dark px-4" style="font-size: 17px; font-style: italic;">
+    <p class="mb-0">“Replace speculation with insight by combining deep learning, sentiment analysis, and forecasting to provide users with clarity and confidence in volatile markets.”</p>
+  </blockquote>
+
+</div>
+
+
+ <!-- ✅ Intelligent Workflow Display -->
+<div class="text-center my-5 py-5 px-3 shadow rounded" style="background: linear-gradient(to right, #f0f7ff, #ffffff);">
+
+  <h3 class="mb-4 fw-bold text-dark" style="font-size: 28px;"> How It Works</h3>
+
+  <div class="row justify-content-center">
+    <!-- Step 1: Ingest -->
+    <div class="col-md-4 mb-4">
+      <div class="p-4 rounded shadow-sm h-100" style="background-color: #eef9f1;">
+        <h5 class="text-success fw-semibold">📰 Ingest</h5>
+        <p class="text-justify text-dark mb-0" style="font-size: 15px;">
+          <strong>"Users can fetch real-time news via NewsAPI or upload CSV datasets for tailored financial sentiment analysis."</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 2: Analyze -->
+    <div class="col-md-4 mb-4">
+      <div class="p-4 rounded shadow-sm h-100" style="background-color: #f3f5ff;">
+        <h5 class="text-primary fw-semibold">🧠 Analyze</h5>
+        <p class="text-justify text-dark mb-0" style="font-size: 15px;">
+          <strong>"We preprocess text (cleaning, tokenization, vectorization) and run it through blended ML models to extract sentiment scores and labels."</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 3: Forecast -->
+    <div class="col-md-4 mb-4">
+      <div class="p-4 rounded shadow-sm h-100" style="background-color: #fff4f3;">
+        <h5 class="text-warning fw-semibold">📊 Forecast</h5>
+        <p class="text-justify text-dark mb-0" style="font-size: 15px;">
+          <strong>"We use Prophet to predict sentiment score trajectories, generating interactive visual forecasts for strategic planning."</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ✅ Core Services: What We Offer -->
+<div class="text-center my-5 py-5 px-3 shadow-sm rounded" style="background: linear-gradient(to right, #ffffff, #f4faff);">
+  <h3 class="fw-bold text-dark mb-4" style="font-size: 28px;"> What We Offer</h3>
+
+  <div class="row justify-content-center">
+    <!-- Left Column -->
+    <div class="col-md-6 mb-4">
+      <div class="bg-white h-100 p-4 shadow-sm rounded border-start border-4 border-primary">
+        <ul class="list-unstyled text-justify" style="font-size: 15px;">
+          <li class="mb-3">
+            <strong>🧠 "Real-time Sentiment Scoring"</strong> — "Extract positive, negative, or neutral signals from financial headlines and summaries using advanced NLP pipelines."
+          </li>
+          <li class="mb-3">
+            <strong>🔗 "Multi-Model Blending"</strong> — "Leverage the collective strength of Logistic Regression, SVM, and SGD for stable, high-precision sentiment classification."
+          </li>
+          <li class="mb-3">
+            <strong>📈 "Score-Based Forecasting"</strong> — "Use Prophet to forecast sentiment score movements over the next 7, 14, or 30 days for any stock symbol."
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="col-md-6 mb-4">
+      <div class="bg-white h-100 p-4 shadow-sm rounded border-start border-4 border-success">
+        <ul class="list-unstyled text-justify" style="font-size: 15px;">
+          <li class="mb-3">
+            <strong>📊 "Interactive Dashboard"</strong> — "Visualize sentiment trends, run new analyses, and interact with data in a user-friendly interface."
+          </li>
+          <li class="mb-3">
+            <strong>📥 "CSV Upload + API Mode"</strong> — "Upload your datasets or fetch news directly using NewsAPI for flexible data input options."
+          </li>
+          <li class="mb-3">
+            <strong>📤 "Downloadable Reports"</strong> — "Export detailed analysis results and forecasts in CSV format for further research or offline access."
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ✅ Project Timeline -->
+<div class="mb-5">
+  <h3 class="fw-bold text-dark mb-5 text-center" style="font-size: 28px;">Project Timeline</h3>
+  
+  <div class="container px-4">
+    <ul class="list-unstyled position-relative">
+      <!-- Timeline Line -->
+      <div class="position-absolute top-0 start-50 translate-middle-x bg-primary" style="width: 4px; height: 100%; z-index: 0;"></div>
+
+      <!-- Jan -->
+      <li class="mb-5 position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle bg-primary text-white rounded-circle p-2" style="z-index: 1;">🧠</div>
+        <div class="bg-white p-4 rounded shadow-sm border-start border-4 border-primary ms-5" style="margin-left: 60px;">
+          <h6 class="fw-bold text-primary mb-1">"Jan 2025"</h6>
+          <p class="mb-0 text-justify">"Ideated the concept of FinSentiments, defined research scope, and formulated key investigative questions around financial sentiment analysis."</p>
+        </div>
+      </li>
+
+      <!-- Feb -->
+      <li class="mb-5 position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle bg-success text-white rounded-circle p-2" style="z-index: 1;">📂</div>
+        <div class="bg-white p-4 rounded shadow-sm border-start border-4 border-success ms-5" style="margin-left: 60px;">
+          <h6 class="fw-bold text-success mb-1">"Feb 2025"</h6>
+          <p class="mb-0 text-justify">"Curated financial news datasets and established a robust preprocessing pipeline including text cleaning, normalization, and vectorization."</p>
+        </div>
+      </li>
+
+      <!-- Mar -->
+      <li class="mb-5 position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle bg-warning text-white rounded-circle p-2" style="z-index: 1;">🤖</div>
+        <div class="bg-white p-4 rounded shadow-sm border-start border-4 border-warning ms-5" style="margin-left: 60px;">
+          <h6 class="fw-bold text-warning mb-1">"Mar 2025"</h6>
+          <p class="mb-0 text-justify">"Trained individual models and blended classifiers (Logistic Regression, SVM, SGD) for enhanced sentiment detection and score prediction."</p>
+        </div>
+      </li>
+
+      <!-- Apr -->
+      <li class="mb-5 position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle bg-info text-white rounded-circle p-2" style="z-index: 1;">📊</div>
+        <div class="bg-white p-4 rounded shadow-sm border-start border-4 border-info ms-5" style="margin-left: 60px;">
+          <h6 class="fw-bold text-info mb-1">"Apr 2025"</h6>
+          <p class="mb-0 text-justify">"Integrated scoring logic, connected Prophet for time-series forecasting, and began combining insights into a unified pipeline."</p>
+        </div>
+      </li>
+
+      <!-- May -->
+      <li class="mb-5 position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle bg-secondary text-white rounded-circle p-2" style="z-index: 1;">🛠️</div>
+        <div class="bg-white p-4 rounded shadow-sm border-start border-4 border-secondary ms-5" style="margin-left: 60px;">
+          <h6 class="fw-bold text-secondary mb-1">"May 2025"</h6>
+          <p class="mb-0 text-justify">"Integrated Django backend with frontend UI, enabling users to select classifiers, view visualizations, and interact dynamically with results."</p>
+        </div>
+      </li>
+
+      <!-- June -->
+      <li class="mb-3 position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle bg-dark text-white rounded-circle p-2" style="z-index: 1;">🚀</div>
+        <div class="bg-white p-4 rounded shadow-sm border-start border-4 border-dark ms-5" style="margin-left: 60px;">
+          <h6 class="fw-bold text-dark mb-1">"June 2025"</h6>
+          <p class="mb-0 text-justify">"Dockerized the entire platform, finalized deployment, and prepared user documentation for GitHub release and production readiness."</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ✅ Who Uses FinSentiments -->
+<div class="mb-5">
+  <h3 class="fw-bold text-dark mb-5 text-center" style="font-size: 28px;">🤝 "Who We Help"</h3>
+
+  <div class="row text-center">
+
+    <!-- Analysts -->
+    <div class="col-md-4 mb-4">
+      <div class="p-4 border rounded shadow-sm h-100">
+        <h5 class="fw-bold text-primary mb-3">🏢 "Financial Analysts"</h5>
+        <p class="text-justify">
+          "Leverage sentiment-driven analytics to validate investment hypotheses, monitor market signals, and deliver high-confidence recommendations to clients."
+        </p>
+      </div>
+    </div>
+
+    <!-- Data Scientists -->
+    <div class="col-md-4 mb-4">
+      <div class="p-4 border rounded shadow-sm h-100">
+        <h5 class="fw-bold text-success mb-3">👩‍💻 "Data Scientists & Researchers"</h5>
+        <p class="text-justify">
+          "Experiment with cutting-edge ML models, benchmark classifiers, and harness NLP pipelines for deeper insights into financial discourse."
+        </p>
+      </div>
+    </div>
+
+    <!-- Investors & Traders -->
+    <div class="col-md-4 mb-4">
+      <div class="p-4 border rounded shadow-sm h-100">
+        <h5 class="fw-bold text-warning mb-3">💰 "Investors & Traders"</h5>
+        <p class="text-justify">
+          "Make intelligent buy/sell decisions by interpreting sentiment trends, predictive scores, and visual forecasts — all in real time."
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ✅ Call to Action -->
+<div class="text-center my-5 py-5 bg-light rounded shadow-sm">
+
+  <h2 class="fw-bold text-dark mb-3" style="font-size: 30px;">"Ready to Experience FinSentiments?"</h2>
+  <p class="lead mb-4 text-muted">
+    "Unleash the power of AI-driven sentiment intelligence and turn raw financial news into actionable insights."
+  </p>
+
+  <a href="{% url 'analysis:perform-analysis' %}" class="btn btn-lg btn-primary px-4 py-2 rounded-pill shadow">
+    Start Analyzing Now
+  </a>
+
+  <p class="mt-4 text-muted">
+    Or <a href="{% url 'frontend:contact' %}" class="fw-semibold text-decoration-underline">connect with our team</a> for personalized solutions.
+  </p>
+
+</div>
+
+{% endblock %}

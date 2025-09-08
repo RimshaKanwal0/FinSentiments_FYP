@@ -1,0 +1,115 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="mb-4 font-weight-bold text-center">My Sentiment & Forecast Reports</h2>
+    <p class="lead text-center mb-5">
+      View your previously analyzed financial reports including sentiment, score predictions, and model insights.
+    </p>
+
+    {% if page_obj %}
+    <!-- ✅ Summary Cards -->
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="card border-left-primary shadow py-2 px-3">
+          <div class="card-body">
+            <h5 class="text-primary font-weight-bold">📰 Total Analyzed Articles</h5>
+            <h4 class="font-weight-bold">{{ page_obj.paginator.count }}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-left-success shadow py-2 px-3">
+          <div class="card-body">
+            <h5 class="text-success font-weight-bold">🔍 Latest Symbol</h5>
+            <h4 class="font-weight-bold">{{ page_obj.0.news.symbol }}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-left-info shadow py-2 px-3">
+          <div class="card-body">
+            <h5 class="text-info font-weight-bold">👤 User</h5>
+            <h4 class="font-weight-bold">{{ request.user.username }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Report Table -->
+    <div class="table-responsive shadow">
+      <table class="table table-bordered table-hover bg-white">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Symbol</th>
+            <th>Published</th>
+            <th>Title</th>
+            <th>Sentiment</th>
+            <th>Score</th>
+            <th>Classifier</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for report in page_obj %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ report.news.symbol }}</td>
+            <td>{{ report.news.published_at|date:"Y-m-d H:i" }}</td>
+            <td>{{ report.news.title|truncatechars:50 }}</td>
+            <td>
+              {% if report.sentiment == "positive" %}
+                <span class="badge badge-success">Positive</span>
+              {% elif report.sentiment == "negative" %}
+                <span class="badge badge-danger">Negative</span>
+              {% else %}
+                <span class="badge badge-secondary">Neutral</span>
+              {% endif %}
+            </td>
+            <td><strong>{{ report.score }}</strong></td>
+            <td>{{ report.classifier_used }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ✅ Pagination Controls -->
+    <nav aria-label="Page navigation" class="mt-4">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled"><span class="page-link">Previous</span></li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+          {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled"><span class="page-link">Next</span></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    {% else %}
+    <div class="alert alert-warning text-center">
+      No reports available yet. Run a sentiment analysis to see results here.
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% load static %}
+<footer class="footer bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Branding / Logo -->
+      <div class="col-md-3 mb-4">
+        <h5 class="mb-3">FinSentiments</h5>
+        <p class="mt-2 small justify-text">
+          Driving smarter financial intelligence through advanced machine learning, sentiment analysis, and cutting-edge forecasting innovation.
+        </p>    
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-3 mb-4">
+        <h5 class="mb-3">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white text-decoration-none hover-underline">Home</a></li>
+          <li><a href="#features" class="text-white text-decoration-none hover-underline">Features</a></li>
+          <li><a href="#about-us" class="text-white text-decoration-none hover-underline">About Us</a></li>
+          <li><a href="#contact" class="text-white text-decoration-none hover-underline">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-3 mb-4">
+        <h5 class="mb-3">Contact Us</h5>
+        <p class="mb-1"><i class="fas fa-envelope me-2"></i> info@finsentiments.com</p>
+        <p class="mb-1"><i class="fas fa-phone me-2"></i> +92 300 0000000</p>
+        <p><i class="fas fa-map-marker-alt me-2"></i> Panjab, Pakistan</p>
+      </div>
+
+      <!-- Newsletter & Social -->
+      <div class="col-md-3 mb-4">
+        <h5 class="mb-3">Stay Updated</h5>
+        <form class="mb-3">
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Your email" aria-label="Email">
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+          </div>
+        </form>
+        <div>
+          <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="text-center mt-4 border-top pt-3">
+      <p class="mb-0">&copy; 2024 <strong>FinSentiments</strong>. All rights reserved. | Built with by FinAI </p>
+    </div>
+  </div>
+
+  <!-- Optional Hover Style -->
+  <style>
+    .hover-underline:hover {
+      text-decoration: underline;
+      color: #0d6efd;
+    }
+    .footer i {
+      transition: color 0.3s ease;
+    }
+    .footer i:hover {
+      color: #0d6efd;
+    }
+  </style>
+</footer>
+
+
+<!-- Script dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<!-- Optional: scripts.js for custom scripts -->
+<script src="{% static 'js/scripts.js' %}"></script>
+</footer>
