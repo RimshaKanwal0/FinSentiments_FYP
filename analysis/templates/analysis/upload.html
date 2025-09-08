@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 style="text-align: center; margin-bottom: 20px;"> Upload Financial Dataset</h2>
+
+<form method="post" enctype="multipart/form-data" style="margin-bottom: 30px; text-align: center;">
+    {% csrf_token %}
+    <input type="file" name="dataset" accept=".csv" required 
+        style="padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; margin-right: 10px;">
+    <button type="submit" 
+        style="background-color: #28a745; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">
+        Upload CSV
+    </button>
+</form>
+
+{% if messages %}
+    <ul style="list-style: none; text-align: center; padding: 0;">
+        {% for message in messages %}
+            <li style="color: {% if message.tags == 'success' %}green{% else %}red{% endif %}; margin-bottom: 10px;">
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if data %}
+    <h3 style="margin-top: 20px;">Preview (Top 20 Rows)</h3>
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+            <thead style="background-color: #007bff; color: white;">
+                <tr>
+                    {% for col in data.0.keys %}
+                        <th style="padding: 10px; border: 1px solid #dee2e6;">{{ col|title }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr style="background-color: {% cycle '#f9f9f9' '#ffffff' %};">
+                        {% for value in row.values %}
+                            <td style="padding: 8px; border: 1px solid #ccc;">{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+{% endif %}
+{% endblock %}

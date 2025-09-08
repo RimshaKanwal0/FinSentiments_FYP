@@ -1,0 +1,180 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="card-title mb-0">Sentiment Analysis Result</h1>
+                <small>Results for: <strong>{{ symbol }}</strong></small>
+            </div>
+        </div>
+        <div class="card-body">
+
+<!-- 🔁 Saved Symbol Selector -->
+<form id="forecastForm" method="POST" 
+    class="d-flex flex-wrap align-items-center mb-3 p-3 bg-white rounded shadow-sm gap-3 border border-secondary-subtle">
+
+    {% csrf_token %}
+
+    <label for="selected_symbol" class="form-label mb-0 fw-semibold text-dark">
+        Select Existing Symbol:
+    </label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <select id="selected_symbol" name="selected_symbol"
+                class="form-select border-dark-subtle"
+                style="min-width: 160px;"
+                onchange="document.getElementById('forecastForm').submit();">
+            {% if saved_symbols %}
+                {% for sym in saved_symbols %}
+                    <option value="{{ sym }}" {% if symbol == sym %}selected{% endif %}>{{ sym }}</option>
+                {% endfor %}
+            {% else %}
+                <option disabled selected>⚠️ No saved symbols found for your account.</option>
+            {% endif %}
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="forecast_days" class="form-label mb-0 fw-semibold text-dark">
+        Forecast Days:
+    </label>&nbsp;&nbsp;&nbsp;&nbsp;
+    <select id="forecast_days" name="forecast_days"
+            class="form-select border-dark-subtle" text-center
+            style="min-width: 160px;"
+            onchange="document.getElementById('forecastForm').submit();">
+        <option value="7" {% if forecast_days == 7 %}selected{% endif %}>7 Days</option>
+        <option value="14" {% if forecast_days == 14 %}selected{% endif %}>14 Days</option>
+        <option value="30" {% if forecast_days == 30 %}selected{% endif %}>30 Days</option>
+    </select>
+    
+</form>
+            <!-- 📈 Forecast Chart -->
+            <canvas id="scoreChart" height="100"></canvas>
+
+            <hr>
+
+            <!-- 🧾 Result Table -->
+            <div class="table-responsive mt-4">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Published At</th>
+                            <th>Sentiment</th>
+                            <th>Score</th>
+                            {% if data.0.processed %}
+                            <th>Processed Text</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data %}
+                        <tr>
+                            <td>{{ row.id }}</td>
+                            <td>{{ row.published_at|date:"Y-m-d H:i" }}</td>
+                            <td>{{ row.sentiment }}</td>
+                            <td>{{ row.score }}</td>
+                            {% if row.processed %}
+                            <td>{{ row.processed }}</td>
+                            {% endif %}
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="5">No results found.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const actualLabels = [
+        {% for row in data %}
+            "{{ row.published_at|date:'Y-m-d H:i' }}",
+        {% endfor %}
+    ];
+
+    const actualScores = [
+        {% for row in data %}
+            {{ row.score }},
+        {% endfor %}
+    ];
+
+    const forecastLabels = [
+        {% for point in forecast %}
+            "{{ point.date }}",
+        {% endfor %}
+    ];
+
+    const forecastScores = [
+        {% for point in forecast %}
+            {{ point.score }},
+        {% endfor %}
+    ];
+
+    const ctx = document.getElementById('scoreChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: actualLabels.concat(forecastLabels),
+            datasets: [
+                {
+                    label: 'Actual Score',
+                    data: actualScores,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    tension: 0.4,
+                    fill: false
+                },
+                {
+                    label: 'Forecasted Score (Next {{ forecast_days }} Days)',
+                    data: Array(actualScores.length).fill(null).concat(forecastScores),
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    tension: 0.4,
+                    borderDash: [5, 5],
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Sentiment Score Trend & Forecast',
+                    font: {
+                        size: 18
+                    }
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Date/Time'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Score'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return value.toFixed(1);
+                        }
+                    },
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+</script>
+<br><br>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 style="text-align: center; margin-bottom: 20px;"> Model Gallery</h2>
+
+<table style="width: 100%; border-collapse: collapse; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+    <thead>
+        <tr style="background-color: #007bff; color: white;">
+            <th style="padding: 10px; border: 1px solid #dee2e6;">Model Name</th>
+            <th style="padding: 10px; border: 1px solid #dee2e6;">Type</th>
+            <th style="padding: 10px; border: 1px solid #dee2e6;">Accuracy / R²</th>
+            <th style="padding: 10px; border: 1px solid #dee2e6;">F1-Score / RMSE</th>
+            <th style="padding: 10px; border: 1px solid #dee2e6;">Execution Time (s)</th>
+            <th style="padding: 10px; border: 1px solid #dee2e6;">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for model in models %}
+        <tr style="background-color: {% cycle '#f9f9f9' '#ffffff' %};">
+            <td style="padding: 10px; border: 1px solid #ccc; font-weight: bold;">{{ model.name }}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ model.type }}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ model.accuracy_or_r2 }}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ model.f1_or_rmse }}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ model.execution_time }}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ model.description }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table><br><br>
+{% endblock %}
