@@ -132,8 +132,6 @@ FinSentiments_FYP/
 ├── users/                  # User authentication
 ├── ml/
 │   └── model/
-│       ├── classification/  # Classification models
-│       └── regression/      # Regression models
 ├── static/                 # CSS, JavaScript and images
 ├── templates/              # Project-level templates
 ├── logs/                   # Application logs
